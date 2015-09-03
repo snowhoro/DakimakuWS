@@ -1,2 +1,2 @@
-# DakimakuWebService
+# DakimakuWS
 Server
