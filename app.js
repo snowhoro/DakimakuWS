@@ -47,10 +47,12 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  mongoose.connect('mongodb://localhost:27017/Tesis');
-  app.use(function(err, req, res, next) {
+  mongoose.connect('mongodb://dakiadmin:teamlaluchjo@dakimaku.noip.me:27017/DakimakuDB');
+  app.use(function(err, req, res, next) 
+  {
     res.status(err.status || 500);
-    res.render('error', {
+    res.render('error', 
+    {
       message: err.message,
       error: err
     });
