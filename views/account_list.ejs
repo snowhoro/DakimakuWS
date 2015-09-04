@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include layout/head.ejs %>
+</head>
+<body>
+
+   
+   <div class="account-table"> 
+   		<h1>Lista de Cuentas</h1>
+	    <table id="account_table" class="display">
+		    <thead>
+		        <tr>
+		            <th>Account Id</th>
+		            <th>Player Name</th>
+		            <th>Consecutive log days</th>
+		            <th>Total log days</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		    <% allacc.forEach(function(account){ %>
+	   			 <tr>
+			    	<td><%= account._id %></td>
+			        <td><%= account.PlayerName %></td>  
+			        <td><%= account.LogDays %></td> 
+			        <td><%= account.TotalLogDays %></td> 
+			     </tr>
+			<% }); %>	        
+		    </tbody>
+		</table>
+	</div>
+<footer>
+	<% include layout/footer.ejs %> 
+	<script type="text/javascript">
+		$(document).ready(function(){
+		    $('#account_table').DataTable();
+		});
+	</script>  
+</footer>  
+</body>
+</html>

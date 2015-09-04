@@ -21,7 +21,7 @@ module.exports.controller = function(app) {
 
 app.get('/allAccounts',function(req,res){
   Account.find(function(err,data){
-    res.send(data);
+    res.render('account_list',{allacc:data});
   });
 });
 
