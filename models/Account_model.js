@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 Schema = mongoose.Schema;
+
 accountSchema = new Schema({
   AccountID : { type : Number, default : 0},
   PlayerName : { type: String , required: true ,unique:true},
@@ -12,6 +13,7 @@ accountSchema = new Schema({
   TotalLogDays : {type: Number, default: 1},
   FriendPoints : {type: Number, default: 0}
 },{collection: 'Account'}),
+
 
 Account = mongoose.model('Account', accountSchema);
 

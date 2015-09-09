@@ -6,18 +6,24 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var mongoose = require('mongoose');
+var config = require('./config');
+var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-
+app.locals = config;
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//app.all('*/auth', function(req,res){
+//  console.log("hola peroooooooo4o4o23o5o");
+//  res.end();
+//});
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -47,7 +53,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  mongoose.connect('mongodb://dakiadmin:teamlaluchjo@dakimaku.noip.me:27017/DakimakuDB');
+  mongoose.connect(app.locals.database);
   app.use(function(err, req, res, next) 
   {
     res.status(err.status || 500);
