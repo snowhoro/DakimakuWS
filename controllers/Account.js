@@ -25,15 +25,21 @@ module.exports.controller = function(app) {
       });
       
   });
-
-app.get('/authenticate',auth.handleAuth,function(req,res){
- res.send("hola");
-});
-
-app.get('/allAccounts',auth.handleAuth,function(req,res){
-  Account.find(function(err,data){
-    res.render('account_list',{allacc:data});
+  
+  app.post('/authenticate', function(req,res){
+    auth.authenticate({id : req.query.PlayerName }, function(err,done){
+      if(err){
+        res.send(err.errorMsg);
+      }
+      else
+        res.send(done);
+    });
   });
-});
+  
+  app.get('/allAccounts',function(req,res){
+    Account.find(function(err,data){
+      res.render('account_list',{allacc:data});
+    });
+  });
 
 }

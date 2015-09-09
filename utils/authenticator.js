@@ -3,13 +3,13 @@ var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var Account = require('../models/Account_model');
 
 
-function authenticate(data,callback){
+exports.authenticate = function(data,callback){
    Account.findOne({_id : data.id}, function(err,result){
       if(err){
-        callback(true, { errorMsg: err});
+          callback({ errorMsg: err.message}, null);
       }else{
         if(!result){  // Vacio
-          callback(true, { errorMsg: 'User Not Found'});
+          callback({ errorMsg: 'User Not Found'}, null);
         }else{
           callback(null, result);
         }
@@ -17,17 +17,17 @@ function authenticate(data,callback){
     });
 }
 
+/*
 exports.handleAuth = function(req,res){ // Handlers..
-      authenticate({ id: '55ee36928994fd88235fe0b9'}, function(error, result){
+      authenticate({ _id: '55ee36928994fd88235fe0b9'}, function(error, result){
         if(error)
           return res.send(error);  // Return del error que me envia el modulo
-        else{
-          res.send(result.token);
-        }
+        else
+          return res.send(result.token);
       });
 }
 
-
+*/
 
 /*module.exports = function(app){
 
