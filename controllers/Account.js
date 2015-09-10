@@ -27,7 +27,7 @@ module.exports.controller = function(app) {
   });
   
   app.post('/authenticate', function(req,res){
-    auth.authenticate({id : req.query.PlayerName }, function(err,done){
+    auth.authAccount({id : req.query.PlayerId }, function(err,done){
       if(err){
         res.send(err.errorMsg);
       }
@@ -36,10 +36,11 @@ module.exports.controller = function(app) {
     });
   });
   
-  app.get('/allAccounts',function(req,res){
-    Account.find(function(err,data){
-      res.render('account_list',{allacc:data});
+  app.get('/allAccounts',auth.authAccount,function(req,res){
+        Account.find(function(err,data){
+          res.render('account_list',{allacc:data});
     });
-  });
+ });     
+
 
 }

@@ -20,10 +20,10 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-//app.all('*/auth', function(req,res){
-//  console.log("hola peroooooooo4o4o23o5o");
-//  res.end();
-//});
+/*app.all('*', function(req,res,next){
+  console.log("hola peroooooooo4o4o23o5o");
+  next();
+});*/
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
