@@ -26,16 +26,6 @@ module.exports.controller = function(app) {
 
   });
 
-  app.post('/authenticate', function(req,res){
-    auth.authAccount({id : req.query.PlayerId }, function(err,done){
-      if(err){
-        res.send(err.errorMsg);
-      }
-      else
-        res.send(done);
-    });
-  });
-
   app.get('/allAccounts',auth.authAccount,function(req,res){
         Account.find(function(err,data){
           res.render('account_list',{allacc:data});
