@@ -18,14 +18,14 @@ module.exports.controller = function(app) {
           }else{
             res.send({msg:'ha ocurrido un error intente de nuevo mas tarde', reason:err.code});
           }
-          
+
         }else{
           res.send({msg:'creado correctamente',user_id: acc._id});
         }
       });
-      
+
   });
-  
+
   app.post('/authenticate', function(req,res){
     auth.authAccount({id : req.query.PlayerId }, function(err,done){
       if(err){
@@ -35,12 +35,12 @@ module.exports.controller = function(app) {
         res.send(done);
     });
   });
-  
+
   app.get('/allAccounts',auth.authAccount,function(req,res){
         Account.find(function(err,data){
           res.render('account_list',{allacc:data});
     });
- });     
+ });
 
 
-}
+};

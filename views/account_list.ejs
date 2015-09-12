@@ -4,7 +4,7 @@
 	<% include layout/head.ejs %>
 </head>
 <body>
-   <div class="account-table"> 
+   <div class="account-table">
    		<h1>Lista de Cuentas</h1>
 	    <table id="account_table" class="display">
 		    <thead>
@@ -19,21 +19,21 @@
 		    <% allacc.forEach(function(account){ %>
 	   			 <tr>
 			    	<td><%= account._id %></td>
-			        <td><%= account.PlayerName %></td>  
-			        <td><%= account.LogDays %></td> 
-			        <td><%= account.TotalLogDays %></td> 
+			        <td><%= account.PlayerName %></td>
+			        <td><%= account.LogDays %></td>
+			        <td><%= account.TotalLogDays %></td>
 			     </tr>
-			<% }); %>	        
+			<% }); %>
 		    </tbody>
 		</table>
 	</div>
 <footer>
-	<% include layout/footer.ejs %> 
+	<% include layout/footer.ejs %>
 	<script type="text/javascript">
 		$(document).ready(function(){
 		    $('#account_table').DataTable();
 		});
-	</script>  
-</footer>  
+	</script>
+</footer>
 </body>
 </html>
