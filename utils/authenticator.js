@@ -11,6 +11,7 @@ exports.authAccount = function(req,res,next){
         if(!result){  // Vacio
           return res.send('User Not Found');
         }else{
+          console.log("user verified");
           next();
         }
       }
