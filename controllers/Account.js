@@ -16,18 +16,16 @@ module.exports.controller = function(app) {
           if (err.code == 11000){
             res.send({msg:'el id de usuario ya esta en uso en otra cuenta', reason:err.code});
           }else{
-            console.log(err.message);
             res.send({msg:'ha ocurrido un error intente de nuevo mas tarde', reason:err.code});
           }
-          
+
         }else{
           res.send({msg:'creado correctamente',user_id: acc._id});
         }
       });
-      
+
   });
-  
-  
+
   app.get('/allAccounts',auth.authAccount,function(req,res){
         Account.find(function(err,data){
           if(err)
@@ -35,7 +33,8 @@ module.exports.controller = function(app) {
           else
             return res.render('account_list',{allacc:data});
     });
- });     
+ });
 
 
 };
+

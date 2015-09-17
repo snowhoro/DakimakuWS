@@ -4,4 +4,4 @@ module.exports = {
 	//'database':'mongodb://192.168.200.100:27017/local'
 	//'database':'mongodb://localhost:27017/Tesis'
 	'database':'mongodb://localhost:27017/local'
-}
+};
