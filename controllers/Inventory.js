@@ -8,44 +8,46 @@ module.exports.controller = function(app) {
 /**
  * a home page route
  */
-      app.get('/createInventory',auth.authAccount,function(req, res) {
+      app.post('/createInventory',auth.authAccount,function(req, res) {
           // any logic goes here
-        var inv = new Inventory({ InventoryID: req.query.PlayerId });
+        var inv = new Inventory({ User: req.body.PlayerId });
     	  inv.save(function (err) {
             if (err){
               if (err.code == 11000){
                 res.send({msg:'el usuario ya tiene un inventario', reason:err.code});
               }else{
-                res.send({msg:'ha ocurrido un error intente de nuevo mas tarde', reason:err.code});
+                res.send({msg:'ha ocurrido un error intente de nuevo mas tarde', reason:err.message});
               }
               
             }else{
-              res.send({msg:'creado correctamente',user_id: inv.InventoryID});
+              res.send({msg:'creado correctamente'});
             }
           });
           
       });
   
   
-    app.get('/getInventory',auth.authAccount,function(req,res){
-        Inventory.findOne({ InventoryID: req.query.PlayerId })
-                 .populate('Characters.MaxChar','Name')
-                 .populate('InventoryID','PlayerName')
-                 .exec(function(err,data){
-          if(err)
-            return res.send(err);
-          else
-            return res.send({inventory:data});
+    app.post('/getInventory',auth.authAccount,function(req,res){
+        var query = Inventory.findOne({User:req.body.PlayerId});
+        query.populate('Characters.MaxChar');
+        query.populate('User','PlayerName');
+        query.exec(function(err,data){
+            
+            if(err)
+                return res.send(err);
+            else
+                return res.send({inventory:data});
         });
+    
     });
     
  
-     app.get('/addCharacter',auth.authAccount,function(req, res) {
-        Inventory.findOne({ InventoryID: req.query.PlayerId },function(err,inventory){
+     app.post('/addCharacter',auth.authAccount,function(req, res) {
+        Inventory.findOne({ User: req.body.PlayerId },function(err,inventory){
             if(err)
                 return res.send(err.message);
             else{
-                inventory.Characters.push({MaxChar: req.query.CharacterId});
+                inventory.Characters.push({MaxChar: req.body.CharacterId});
                 inventory.save(function(err,done){
                     if(err)
                         return res.send(err.message);
@@ -56,12 +58,12 @@ module.exports.controller = function(app) {
         });
     });
 
-    app.get('/removeCharacter',auth.authAccount,function(req, res) {
-         Inventory.findOne({ InventoryID: req.query.PlayerId },function(err,inventory){
+    app.post('/removeCharacter',auth.authAccount,function(req, res) {
+         Inventory.findOne({ User: req.body.PlayerId },function(err,inventory){
             if(err)
                 return res.send(err.message);
             else{
-                inventory.Characters.pull(req.query.CharacterId);
+                inventory.Characters.pull(req.body.CharacterId);
                 inventory.save(function(err,done){
                     if(err)
                         return res.send(err.message);

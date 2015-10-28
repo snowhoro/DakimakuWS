@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 Schema = mongoose.Schema;
 
 characterSchema = new Schema({
-    Name : { type : String, default : "NaN",unique: true },
+    Name : { type : String, unique: true, required:true },
     Rarity: { type: Number, default: 1, max: 6},
     CurveId: { type: Schema.Types.ObjectId, ref: 'CharacterCurves'},
     MaxHP : { type : Number, default : 0},

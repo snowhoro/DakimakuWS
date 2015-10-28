@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 Schema = mongoose.Schema;
 
 inventorySchema = new Schema({
-    InventoryID: { type: Schema.Types.ObjectId, ref: 'Account',required: true ,unique:true },
+    User: { type: Schema.Types.ObjectId, ref: 'Account',required: true ,unique:true },
     Characters : [{
         MaxChar: { type: Schema.Types.ObjectId, ref: 'Character'},
         PlayerChar: {

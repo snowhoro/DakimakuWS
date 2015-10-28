@@ -2,8 +2,7 @@ var mongoose = require('mongoose');
 Schema = mongoose.Schema;
 
 accountSchema = new Schema({
-  AccountID : { type : Number, default : 0},
-  PlayerName : { type: String , required: true ,unique:true},
+  PlayerName : { type: String , required: true },
   Experience : { type: Number, default: 0},
   Level : { type: Number, default: 0},
   Stamina : {type: Number, default: 20},

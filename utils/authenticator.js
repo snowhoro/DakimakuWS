@@ -4,7 +4,7 @@ var Account = require('../models/Account_model');
 
 
 exports.authAccount = function(req,res,next){
-   Account.findOne({_id : req.query.PlayerId}, function(err,result){
+   Account.findOne({_id : req.param("PlayerId")}, function(err,result){
      if(err){
         return res.send(err.errorMsg);
       }else{
