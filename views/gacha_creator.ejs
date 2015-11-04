@@ -1,11 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<% include layout/head.ejs %>
-<body>
-    <h1>Hello, world!</h1>
+<% include layout/site_top.ejs %>
+<div class="middle-main">
+  <div class="char-select">
+    <p class="list-title">Characters</p>
+    <ul id="char-list" class="connectedSortable char-sortable">
+      <% characters.forEach(function(character){ %>
+          <li><input type="hidden" value="<%= character._id %>"><%= character.Name %></li>
+      <% }); %>
+    </ul>
+  </div>
+  <form id="gacha-form">
+    <div class="gacha-select">
+      <p class="list-title">Featured</p>
+      <ul id="featured-list" class="connectedSortable char-sortable">
+        
+      </ul>
+    </div>
+    
+    <div class="gacha-select">
+      <p class="list-title">Lineup</p>
+      <ul id="lineup-list" class="connectedSortable char-sortable">
+        
+      </ul>
+    </div>
+  </form>
+  <span onClick="sendForm();"><button class="form-button">Create</button></span>
+  
+</div>
+	
+     
+   
+    
 
-
-
-<% include layout/footer.ejs %>
-</body>
-</html>
+<% include layout/site_bot.ejs %>
+<script src="javascripts/gacha_creator.js"></script>

@@ -63,8 +63,8 @@
 				var onEndTransFn = function( ev ) {
 					if( support && ( ev.target.className !== 'container' || ev.propertyName.indexOf( 'transform' ) == -1 ) ) return;
 					this.removeEventListener( transEndEventName, onEndTransFn );
-					classie.remove( perspectiveWrapper, 'modalview' );
-					classie.remove(container, 'transform');
+					
+					 
 					// mac chrome issue:
 					document.body.scrollTop = document.documentElement.scrollTop = docscroll;
 					// change top of contentWrapper
@@ -76,6 +76,10 @@
 				else {
 					onEndTransFn.call();
 				}
+				setTimeout(function(){
+					classie.remove( perspectiveWrapper, 'modalview' );
+					classie.remove(container, 'transform');
+				}, 500);
 				classie.remove( perspectiveWrapper, 'animate' );
 			}
 		});

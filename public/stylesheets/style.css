@@ -1,14 +1,95 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+*{
+  margin:0;
+  padding:0;
 }
-
-a {
-  color: #00B7FF;
-}
-
 .account-table{
 	text-align: center;
 	width: 70%;
 	margin: 0 auto;
 }
+
+.menu-button{
+	float:right;
+	margin:10px 20px;
+	padding:20px;
+}
+
+.main-background{
+	background-color:#373737 !important;
+}
+
+.char-sortable {
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+    width:100%;
+}
+.char-sortable li {
+  margin: 0 5px 5px 5px;
+  padding: 5px;
+  font-size: 1.2em;
+  height:auto !important;
+  background-color:white;
+  text-align:center;
+  border-radius:3px;
+}
+
+.middle-main{
+  width:80%;
+  height:90vh;
+  margin:50px auto;
+  background-color:black;
+  border-radius:10px;
+  border: 5px solid white;
+  padding:1%;
+  position:relative;
+}
+
+.char-select{
+  height:100%;
+  width:20%;
+  padding:0.5%;
+  float:left;
+  background-color:#2F302F;
+  border-radius:10px;
+  margin: 0 1%;
+}
+
+.gacha-select{
+  height:100%;
+  width:20%;
+  padding:0.5%;
+  float:left;
+  background-color:#2F302F;
+  border-radius:10px;
+  margin: 0 1%;
+}
+
+.list-title{
+    background-color: #262626;
+    border: 5px solid #e86a32;
+    border-radius: 10px;
+    color: #e86a32;
+    font-size: 40px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    overflow:hidden;
+}
+
+.form-button{
+    float: right;
+    font-size: 42px;
+    padding: 60px;
+    height: 170px;
+    position: absolute;
+    top: 50%;
+    margin-top: -85px;
+    right: 50px;
+}
+
+
+

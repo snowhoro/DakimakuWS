@@ -27,7 +27,7 @@ module.exports.controller = function(app) {
 
   });
 
-  app.get('/allAccounts',auth.authAccount,function(req,res){
+  app.get('/allAccounts',function(req,res){
         Account.find(function(err,data){
           if(err)
             return res.send(err);

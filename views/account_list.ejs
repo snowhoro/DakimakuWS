@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<% include layout/head.ejs %>
-</head>
-<body>
-   <div class="account-table">
+<% include layout/site_top.ejs %>
+
+   <div class="account-table" style="color:#E86A32;">
    		<h1>Lista de Cuentas</h1>
 	    <table id="account_table" class="display">
 		    <thead>
@@ -15,7 +11,7 @@
 		            <th>Total log days</th>
 		        </tr>
 		    </thead>
-		    <tbody>
+		    <tbody style="color:black">
 		    <% allacc.forEach(function(account){ %>
 	   			 <tr>
 			    	<td><%= account._id %></td>
@@ -27,13 +23,11 @@
 		    </tbody>
 		</table>
 	</div>
-<footer>
-	<% include layout/footer.ejs %>
+	<% include layout/site_bot.ejs %>
 	<script type="text/javascript">
 		$(document).ready(function(){
 		    $('#account_table').DataTable();
 		});
 	</script>
-</footer>
 </body>
 </html>
