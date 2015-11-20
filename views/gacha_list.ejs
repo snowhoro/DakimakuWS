@@ -1,0 +1,33 @@
+<% include layout/site_top.ejs %>
+  
+    <div class="account-table" style="color:#E86A32;">
+   		<h1>Lista de Cuentas</h1>
+	    <table id="gacha_table" class="display">
+		    <thead>
+		        <tr>
+		            <th>Gacha ID</th>
+		            <th>Gacha Name</th>
+		            <th>Status</th>
+		            <th>Actions</th>
+		        </tr>
+		    </thead>
+		    <tbody style="color:black">
+		    <% gachas.forEach(function(gacha){ %>
+	   			 <tr>
+			    	<td><%= gacha._id %></td>
+			        <td><%= gacha.GachaName %></td>
+			        <% if(gacha.Active) { %>
+			            <td class="gacha-active" status="<%= gacha.Active %>" >Active</td>
+			        <% } else{ %>
+			            <td class="gacha-inactive" status="<%= gacha.Active %>">Inactive</td>
+			        <% } %>
+			        <td><button onClick="changeGachaStatus()">Activate</button><button onClick="deleteGacha()">Delete</button></td>
+			     </tr>
+			<% }); %>
+		    </tbody>
+		</table>
+	</div>
+	<% include layout/site_bot.ejs %>
+	<script src="javascripts/datatables.min.js"></script>
+    <script src="javascripts/gacha_list.js"></script>
+

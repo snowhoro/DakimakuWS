@@ -56,6 +56,7 @@
   background-color:#2F302F;
   border-radius:10px;
   margin: 0 1%;
+  overflow:visible !important;
 }
 
 .gacha-select{
@@ -91,5 +92,46 @@
     right: 50px;
 }
 
+.char_input{
+  margin: 5px;
+}
+
+.enemy-field{
+  background-color:red;
+  font-weight:bold;
+  color:white;
+  font-size: 2em !important;
+  text-align:center;
+}
+
+.team-field{
+  background-color:green;
+  font-weight:bold;
+  color:white;
+  font-size: 2em !important;
+  text-align:center;
+}
+
+.list-input{
+    background-color: #262626;
+    border: 5px solid #e86a32;
+    border-radius: 10px;
+    width:150px;
+    color: #e86a32;
+    font-size: 40px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.gacha-active{
+  background-color:green;
+  color:white;
+  font-weight:bold;
+}
+.gacha-inactive{
+  background-color:red;
+  color:white;
+  font-weight:bold;
+}
 
 

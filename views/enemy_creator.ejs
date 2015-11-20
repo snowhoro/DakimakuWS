@@ -1,0 +1,22 @@
+<% include layout/site_top.ejs %>
+
+<div class="middle-main">
+    <form id="enemy-form" action="enemy_creator" method="POST" >
+            <input class="char_input" type="text" value="" placeholder="Name" name="Name" />
+            <input class="char_input" type="number" value="" placeholder="Max HP" name="HP" />
+            <input class="char_input" type="number" value="" placeholder="Magic attack" name="MagicAttack" />
+            <input class="char_input" type="number" value="" placeholder="Magic Defense" name="MagicDefense" />
+            <input class="char_input" type="number" value="" placeholder="Physical attack" name="PhysicalAttack" />
+            <input class="char_input" type="number" value="" placeholder="Physical defense" name="PhysicalDefense" />
+            <input class="char_input" type="text" value="" placeholder="Attribute" name="Attribute" />
+            <input class="char_input" type="text" value="" placeholder="Sprite" name="Sprite" />
+            <input class="char_input" type="text" value="" placeholder="Portrait" name="Portrait" />
+            <input class="char_input" type="number" value="" placeholder="Turns" name="Turns" />
+          <!--  <input class="char_input" type="text" value="" placeholder="Skills" name="Skills" />-->
+            
+    </form>
+    <button id="enemy-submit">Submit</button>
+</div>
+	
+<% include layout/site_bot.ejs %>
+<script src="javascripts/enemy_creator.js"></script>

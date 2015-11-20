@@ -3,10 +3,16 @@ Schema = mongoose.Schema;
 
 teamSchema = new Schema({
     User :  { type: Schema.Types.ObjectId, ref: 'Account',required: true ,unique:true },
-    StaminaTimer: { type: Date, default: Date.now() }
-},{collection: 'Teams'}),
+    Teams : {  
+        team_1:[Schema.Types.ObjectId],  
+        team_2:[Schema.Types.ObjectId],
+        team_3:[Schema.Types.ObjectId],
+        team_4:[Schema.Types.ObjectId],
+        team_5:[Schema.Types.ObjectId],
+    }
+},{collection: 'Team'}),
 
 
-Session = mongoose.model('Team', teamSchema);
+Team = mongoose.model('Team', teamSchema);
 
 module.exports = Team;

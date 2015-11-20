@@ -1,12 +1,28 @@
 var mongoose = require('mongoose')
-var Inventory = require('../models/Character_model');
+var Character = require('../models/Character_model');
 var auth = require('../utils/authenticator');
 
 module.exports.controller = function(app) {
     
-    app.post('/createCharacter',auth.authAccount,function(req, res) {
+    app.get('/character_creator',function(req,res){
+      return res.render('character_creator');
+    });
+    
+    app.post('/character_creator',function(req,res) {
           // any logic goes here
-        var char = new Character({  Name: req.body.CharacterName });
+        var char = new Character({  
+          Name: req.body.Name,
+          Rarity: req.body.Rarity,
+          MaxHP: req.body.MaxHP,
+          MaxMagicAttack: req.body.MaxMagicAttack,
+          MaxMagicDefense: req.body.MaxMagicDefense,
+          MaxPhysicalAttack: req.body.MaxPhysicalAttack,
+          MaxPhysicalDefense: req.body.MaxPhysicalDefense,
+          Attribute: req.body.Attribute,
+          Sprite: req.body.Sprite,
+          Portrait: req.body.Portrait,
+          Skills: req.body.Skills
+        });
     	  char.save(function (err) {
             if (err){
                 res.send({msg:'', reason:err.code});
@@ -17,7 +33,7 @@ module.exports.controller = function(app) {
           
       });
       
-    app.post('getCharacter',auth.authAccount, function(req,res){
+    app.post('/getCharacter',auth.authAccount, function(req,res){
        Character.find({ _id: req.body.CharacterId })
                  .populate('Characters.MaxChar','Name')
                  .populate('InventoryID','PlayerName')

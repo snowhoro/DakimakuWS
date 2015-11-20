@@ -1,0 +1,68 @@
+<% include layout/site_top.ejs %>
+  <style>
+    #dialog label, #dialog input { display:block; }
+    #dialog label { margin-top: 0.5em; }
+    #dialog input, #dialog textarea { width: 95%; }
+    #tabs { margin-top: 1em; }
+    #tabs li .ui-icon-close { float: left; margin: 0.4em 0.2em 0 0; cursor: pointer; }
+    #add_tab { cursor: pointer; }
+    #tab_content { list-style-type: none; margin: 0; padding: 0; width: 350px; }
+    #tab_content li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 50px; height: 45px; font-size: 10px; text-align: center; overflow:hidden; border:black 1px solid; cursor:pointer;}
+    .tab_content { list-style-type: none; margin: 0; padding: 0; width: 350px; }
+    .tab_content li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 50px; height: 45px; font-size: 10px; text-align: center; overflow:hidden; border:black 1px solid; cursor:pointer;}  
+  </style>
+  <div class="middle-main">
+    <div id="dialog" title="New Stage">
+      <form>
+        <fieldset class="ui-helper-reset">
+          <label for="tab_title">StageNumber</label>
+          <input type="number" name="tab_title" id="tab_title" value="Stage number" class="ui-widget-content ui-corner-all">
+          <label for="tab_content">Layout</label>
+          <ul name="tab_content" id="tab_content" class="ui-widget-content ui-corner-all">
+
+            <% for(var i = 7; i >= 0; i--){ %>
+              <% for(var j = 0; j < 6; j++){ %>
+                <li class="stage-li" posY="<%= i %>" posX ="<%= j %>" entityId="" entityType="">
+                  EMPTY
+                </li>
+              <% } %>
+            <% } %>
+          </ul>
+        </fieldset>
+      </form>
+    </div>
+     
+    <button id="add_tab">Add Stage</button>
+     
+    <div id="tabs">
+      <span>
+        Dungeon Name: <input type="text" id="dungeonName"> 
+        Background image: <input type="text" id="backgroundImg"> 
+        <button id="add_tab" onClick="createDungeon();">Create</button> 
+      </span>
+      
+      <ul>
+        
+      </ul>
+      
+    </div>
+  </div>
+  
+  <div id="stage-li-dialog" title="Edit Position" style="display:block">
+      <form id="openField-form">
+        <fieldset class="ui-helper-reset">
+          <label for="tab_title">Entity type</label>
+          <br>
+          <input  type="radio" name="entityType" value="C"> Team member
+          <br>
+          <input type="radio" name="entityType" value="E"> Enemy
+          <br>
+          <div id="field-content">
+            
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  
+<% include layout/site_bot.ejs %>
+<script src="javascripts/dungeon_creator.js"></script>

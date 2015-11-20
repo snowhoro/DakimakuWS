@@ -1,0 +1,23 @@
+<% include layout/site_top.ejs %>
+
+<div class="middle-main">
+    <form id="character-form" action="character_creator" method="POST" >
+            <input tabindex=1 class="char_input" type="text" value="" placeholder="Name" name="Name" />
+            <input tabindex=2 class="char_input" type="number" value="" placeholder="Rarity" id="password" name="Rarity" />
+            <!--<input type="text" value="" placeholder="CurveId" id="username" name="Name" />-->
+            <input tabindex=3 class="char_input" type="number" value="" placeholder="Max HP" name="MaxHP" />
+            <input tabindex=4 class="char_input" type="number" value="" placeholder="Max magic attack" name="MaxMagicAttack" />
+            <input tabindex=5 class="char_input" type="number" value="" placeholder="Max Magic Defense" name="MaxMagicDefense" />
+            <input tabindex=6 class="char_input" type="number" value="" placeholder="Max physical attack" name="MaxPhysicalAttack" />
+            <input tabindex=7 class="char_input" type="number" value="" placeholder="Max physical defense" name="MaxPhysicalDefense" />
+            <input tabindex=8 class="char_input" type="text" value="" placeholder="Attribute" name="Attribute" />
+            <input tabindex=9 class="char_input" type="text" value="" placeholder="Sprite" name="Sprite" />
+            <input tabindex=10 class="char_input" type="text" value="" placeholder="Portrait" name="Portrait" />
+          <!--  <input tabindex=11 class="char_input" type="text" value="" placeholder="Skills" name="Skills" />-->
+            
+    </form>
+    <button id="char-submit">Submit</button>
+</div>
+	
+<% include layout/site_bot.ejs %>
+<script src="javascripts/character_creator.js"></script>

@@ -5,8 +5,8 @@ Schema = mongoose.Schema;
 inventorySchema = new Schema({
     User: { type: Schema.Types.ObjectId, ref: 'Account',required: true ,unique:true },
     Characters : [{
-        MaxChar: { type: Schema.Types.ObjectId, ref: 'Character'},
         PlayerChar: {
+            MaxChar: { type: Schema.Types.ObjectId, ref: 'Character' },
             Level: { type: Number, default: 1},
             Experience: { type: Number, default: 0},
             HP: {type: Number,default: 1},
