@@ -40,7 +40,11 @@ fs.readdirSync('./controllers').forEach(function (file) {
 });
 /*app.use('/', routes);
 app.use('/users', users);*/
-
+app.use(function(err,req,res,next){
+    res.writeHeader(500, {'Content-Type' : "text/html"});
+    res.write("<h1>" + err.name + "</h1>");
+    res.end("<p style='border:1px dotted red'>" + err.message + "</p>");
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

@@ -94,24 +94,37 @@ module.exports.controller = function(app) {
           if(err){
               return res.send(err);
           }else{
-              inventory.Characters.forEach(function(char){
-                  if(req.body.FodderIds.indexOf(char._id) > -1){
-                      inventory.Characters.splice(inventory.Characters.indexOf(char),1);
-                  }else if(char._id == req.body.Character._id){
-                      var fusedChar = req.body.Character;
-                      fusedChar.MaxChar = char.MaxChar;
-                      inventory.Characters[inventory.Characters.indexOf(char)] = fusedChar;
-                  }
-              });
-              inventory.save(function(err,result){
-                  if(err){
-                      return res.send(err);
-                  }else{
-                      return res.send(result);
-                  }
-              });
+              var fusedChar = JSON.parse(req.body.Character);
+              var fodderIds = JSON.parse(req.body.FodderIds);
+                
+                for(var i = 0; i < inventory.Characters.length; i++){
+                    if(inventory.Characters[i]._id == fusedChar._id){
+
+                        fusedChar._id = mongoose.Types.ObjectId(fusedChar._id);
+                        fusedChar.PlayerChar.MaxChar = mongoose.Types.ObjectId(fusedChar.PlayerChar.MaxChar);
+                        inventory.Characters[i].PlayerChar = fusedChar.PlayerChar;
+                    }
+                    for(var f = 0;f < fodderIds.length; f++){
+                        if(inventory.Characters[i]._id == fodderIds[f]){
+                            console.log('hola');
+                            inventory.Characters.splice(i,1);
+                        }
+                    }
+                }
+                
+                inventory.save(function(err,result){
+                    if(err){
+                        return res.send(err);
+                    }else{
+                        return res.send(result);
+                    }
+                });
           }
       })
+    });
+    
+    app.post('/character_evolution',auth.authAccount,function(req,res){
+        
     });
 
 
